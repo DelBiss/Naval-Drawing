@@ -56,11 +56,11 @@ class img():
         return BorderedIm
 
     @staticmethod
-    def Save(aPic,filename,path="temp/", isTemp=False, ext="png"):
+    def Save(aPic,filename, dpi=(300, 300),path="temp/", isTemp=False, ext="png"):
         outpath = CreateOutputPath(path, isTemp)
         outputPath = "{}{}.{}".format(outpath,filename,ext)
         
         outMsg = "Image save @ {}".format(outputPath)
-        aPic.save(outputPath)
+        aPic.save(outputPath,dpi)
         print(outMsg)
         

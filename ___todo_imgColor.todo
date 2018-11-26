@@ -1,0 +1,14 @@
+
+ImgColor:
+  Color Space Init:
+    All ColorSpace are map to property,
+    but Convertion only work if RGB exist.
+    That the main thing to do!
+    Convertion:
+      ☐ Detect the source ColorSpace
+      ☐ Work from any source ColorSpace:
+        ☐ Map a path from the Source ColorSpace to the Target ColorSpace
+    ☐ Normalisation vs Utilisation
+    ☐ Saving History ?
+  @low ☐  Decide what to do with the alpha 
+  

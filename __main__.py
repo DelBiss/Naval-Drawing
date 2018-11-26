@@ -8,8 +8,10 @@ class Test():
         import execution
         import imgColor
         import imgPalette
+        import grid
 
         self.test={}
+        self.test[grid.__name__] = grid.Test
         self.test[imgPalette.__name__] = imgPalette.Test
         self.test[execution.__name__] = execution.Test
         self.test[imgColor.__name__] = imgColor.Test

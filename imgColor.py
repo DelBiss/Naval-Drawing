@@ -44,6 +44,7 @@ class ColorSpace():
 
 
 class ImgColor():
+    # TODO: Something
     def __init__(self, RGB, count=0, colorSpace= Color.RGB, applyAlpha = False):
         self.original = RGB
         self.nb = count

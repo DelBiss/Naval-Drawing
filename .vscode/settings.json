@@ -1,3 +1,6 @@
 {
-    "markdown.styles": [".\\style\\markdown1.css"]
+    "markdown.styles": [
+        ".\\style\\markdown1.css"
+    ],
+    "taskButtons.buttons": [{"task": "Main","buttonLabel": "Run All"},{"buttonLabel": "Current File","task": "Current"}]
 }

@@ -1,0 +1,58 @@
+body{
+  background: #25344e;
+  
+  color: #EEE;
+  
+  
+  
+}
+
+.vscode-dark a {
+	color: #61AFEF;
+}
+
+
+.vscode-dark h1,
+.vscode-dark h2,
+.vscode-dark h3,
+.vscode-dark h4,
+.vscode-dark h5,
+.vscode-dark h6 {
+	font-weight: 600;
+	color: rgb(145, 224, 108);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #ABB2BF;
+}
+
+.vscode-dark code {
+	color: #90C378;
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code>div {
+	background-color: #2C323C;
+}
+
+.vscode-dark table>thead>tr>th {
+  border-color: #2C323C;
+  background-color: #1b2333;
+}
+
+.vscode-dark h1,
+.vscode-dark hr {
+  border-color: #2C323C;
+}
+.vscode-dark table>tbody>tr>td {
+  border-color: #2C323C;
+  background-color: #252f41;
+}
+
+.vscode-dark blockquote {
+	color: #5C6370;
+	font-style: italic;
+	background: transparent;
+	border-color: #2C323C;
+}

@@ -40,7 +40,7 @@ def CreateLineAcross(img, p, fillColor=(0,)*3, width=1, pattern=0, IsVertical=Fa
 
                 img.putpixel(finalPos, fillColor)
 
-def GetGrid(gridDimension=(26, 30), lineColor=(0,)*3, Pattern=0, title="Grid", pageProportion=(1, 1), mainLine=[lambda x: False]):
+def GetGrid(gridDimension=(55, 70), lineColor=(0,)*3, Pattern=0, title="Grid", pageProportion=(1, 1), mainLine=[[{"test":lambda x: False}]]):
     maxSize = (int(2400*pageProportion[0]), int(3000*pageProportion[1]))
     borderSize = 5
     Width = 2
@@ -53,12 +53,22 @@ def GetGrid(gridDimension=(26, 30), lineColor=(0,)*3, Pattern=0, title="Grid", p
         mainLine = mainLine*2
 
     for ori, d in enumerate(gridDimension):
+        
+            
         for i in range(1, d):
             stop = i*gridSize
-            lWidth = Width
-            if mainLine[ori](i):
-                lWidth = Width*2
-            CreateLineAcross(grid, stop, lineColor, lWidth, Pattern, ori)
+            l_pattern = Pattern
+            l_width = Width
+            l_lineColor = lineColor
+            for mainL in mainLine[ori]:
+                if mainL["test"](i):
+                    if "pattern" in mainL:
+                        l_pattern = mainL["pattern"]
+                    if "width" in mainL:
+                        l_width = mainL["width"]
+                    if "color" in mainL:
+                        l_lineColor = mainL["color"]
+            CreateLineAcross(grid, stop, l_lineColor, l_width, l_pattern, IsVertical = ori == 0)
 
 
     grid = util.img.AddBorder(grid, borderSize)
@@ -72,6 +82,28 @@ def GetGrid(gridDimension=(26, 30), lineColor=(0,)*3, Pattern=0, title="Grid", p
 def Test():
 
     from execution import Launcher
+    def FullGrid():
+        col_black = (0,)*3
+        col_grey = (127,)*3
+        pattern  ="pattern"
+        width = "width"
+        color = "color"
+        #lineColor=(0,)*3,Pattern=0 == pattern, width, color test mainLine
+        mainLine = [{   "test": lambda x: True,
+            pattern:4,
+            width:4,
+            color: col_grey,},
+        {   "test": lambda x: x%5 == 0,
+            pattern:3,
+            width:4,
+            color: col_grey,},
+        {   "test": lambda x: x%10 == 0,
+            pattern:3,
+            width:4,
+            color: col_black,}]
+        full = GetGrid(title="", mainLine=[mainLine])
+        util.img.Save(full, "FullGrid", (300, 300), "grid/", True, border=0)
+        pass
 
     def NoTest():
         patternRange = range(6)
@@ -124,8 +156,10 @@ def Test():
         full = util.img.ComposeImg(*(allImg))
         util.img.Save(full, "LineTest", (300, 300), "grid/", True, border=0)
 
-    Launcher.Launch(NoTest)
-    Launcher.Launch(Line_Test)
+    Launcher.Launch(FullGrid)
+    if False:
+        Launcher.Launch(NoTest)
+        Launcher.Launch(Line_Test)
 
 
 if __name__ == "__main__":

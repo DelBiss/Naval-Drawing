@@ -6,7 +6,7 @@ def CreateOutputPath(path="temp/", isTemp=False):
     if isTemp:
         path = "temp/" + path
 
-    outPath = "output/"+path
+    outPath = "./output/"+path
     os.makedirs(os.path.dirname(outPath+"test.bmp"), exist_ok=True)
     return outPath
 
@@ -70,11 +70,11 @@ class img():
         return im
 
     @staticmethod
-    def Save(aPic,filename, dpi=(300, 300),path="temp/", isTemp=False, ext="png", border=10):
+    def Save(aPic,filename, dpi=(300, 300),path="temp/", isTemp=False, ext="png", border=0):
         outpath = CreateOutputPath(path, isTemp)
         outputPath = "{}{}.{}".format(outpath,filename,ext)
         aPic2 = img.AddBorder(aPic,border, (255,)*3)
-        outMsg = "Image save @ {}, with {} border".format(outputPath,border)
+        outMsg = "Image save @ {} , with {} border".format(outputPath,border)
         aPic2.save(outputPath,dpi=dpi)
         print(outMsg)
         
